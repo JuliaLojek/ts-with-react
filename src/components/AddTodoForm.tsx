@@ -10,7 +10,8 @@ const AddTodoForm: React.FC<AddTodoFormProps> = (props) => {
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const enteredText = textInputRef.current!.value;
-    console.log(enteredText);
+    props.addNewTodo(enteredText);
+    textInputRef.current!.value = "";
   }
 
   return (
