@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
   const [todos, setTodos] = useState(defaultTodos);
 
-  const addNewTodo = (todoText: string) => {
+  const todoAddHandler = (todoText: string) => {
     const newTodo: Todo = {
       id: Math.random().toString(),
       text: todoText,
@@ -20,17 +20,18 @@ const App: React.FC = () => {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
-  const deleteTodo = (todoId: string) => {
-    const newTodos = todos.filter((todo) => {
-      return todo.id !== todoId;
+  const todoDeleteHandler = (todoId: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => {
+        return todo.id !== todoId;
+      });
     });
-    setTodos(newTodos);
   };
 
   return (
     <div className="App">
-      <AddTodoForm addNewTodo={addNewTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <AddTodoForm onAddTodo={todoAddHandler} />
+      <TodoList todos={todos} onDeleteTodo={todoDeleteHandler} />
     </div>
   );
 };

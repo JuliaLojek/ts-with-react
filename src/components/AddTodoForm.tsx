@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 interface AddTodoFormProps {
-  addNewTodo: (a: string) => void;
+  onAddTodo: (a: string) => void;
 }
 
 const AddTodoForm: React.FC<AddTodoFormProps> = (props) => {
@@ -10,7 +10,7 @@ const AddTodoForm: React.FC<AddTodoFormProps> = (props) => {
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const enteredText = textInputRef.current!.value;
-    props.addNewTodo(enteredText);
+    props.onAddTodo(enteredText);
     textInputRef.current!.value = "";
   }
 

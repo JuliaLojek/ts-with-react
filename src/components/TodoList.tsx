@@ -2,7 +2,7 @@ import React from "react";
 
 interface TodoListProps {
   todos: { id: string; text: string }[];
-  deleteTodo: (todoId: string) => void;
+  onDeleteTodo: (todoId: string) => void;
 }
 
 const TodoList: React.FC<TodoListProps> = (props) => {
@@ -12,7 +12,7 @@ const TodoList: React.FC<TodoListProps> = (props) => {
         return (
           <li key={todo.id}>
             <span>{todo.text}</span>
-            <button onClick={() => props.deleteTodo(todo.id)}>delete</button>
+            <button onClick={() => props.onDeleteTodo(todo.id)}>delete</button>
           </li>
         );
       })}
