@@ -17,14 +17,20 @@ const App: React.FC = () => {
       id: Math.random().toString(),
       text: todoText,
     };
-    const newTodos = [...todos, newTodo];
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+  };
+
+  const deleteTodo = (todoId: string) => {
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== todoId;
+    });
     setTodos(newTodos);
   };
 
   return (
     <div className="App">
       <AddTodoForm addNewTodo={addNewTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
     </div>
   );
 };
